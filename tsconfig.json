@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@cyb/ui": ["libs/ui/src/index.ts"]
+      "@cyb/ui": ["libs/ui/src/index.ts"],
+      "@cyb/util": ["libs/util/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

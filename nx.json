@@ -48,6 +48,9 @@
     "shell-web-e2e": {
       "tags": [],
       "implicitDependencies": ["shell-web"]
+    },
+    "util": {
+      "tags": []
     }
   }
 }

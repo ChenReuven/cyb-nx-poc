@@ -1,5 +1,5 @@
 import "./app.element.css";
-
+import { sum } from "@cyb/util";
 export class AppElement extends HTMLElement {
   public static observedAttributes = [];
 
@@ -96,4 +96,5 @@ nx affected:e2e
     `;
   }
 }
+sum(1, 2);
 customElements.define("cyb-root", AppElement);

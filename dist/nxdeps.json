@@ -2,6 +2,96 @@
   "version": "1",
   "projectGraph": {
     "nodes": {
+      "shell-web-e2e": {
+        "name": "shell-web-e2e",
+        "type": "e2e",
+        "data": {
+          "root": "apps/shell-web-e2e",
+          "sourceRoot": "apps/shell-web-e2e/src",
+          "projectType": "application",
+          "architect": {
+            "e2e": {
+              "builder": "@nrwl/cypress:cypress",
+              "options": {
+                "cypressConfig": "apps/shell-web-e2e/cypress.json",
+                "tsConfig": "apps/shell-web-e2e/tsconfig.e2e.json",
+                "devServerTarget": "shell-web:serve"
+              },
+              "configurations": {
+                "production": {
+                  "devServerTarget": "shell-web:serve:production"
+                }
+              }
+            },
+            "lint": {
+              "builder": "@nrwl/linter:lint",
+              "options": {
+                "linter": "eslint",
+                "tsConfig": [
+                  "apps/shell-web-e2e/tsconfig.e2e.json"
+                ],
+                "exclude": [
+                  "**/node_modules/**",
+                  "!apps/shell-web-e2e/**/*"
+                ]
+              }
+            }
+          },
+          "tags": [],
+          "files": [
+            {
+              "file": "apps/shell-web-e2e/.eslintrc",
+              "ext": "",
+              "mtime": 1593346308350.4348
+            },
+            {
+              "file": "apps/shell-web-e2e/cypress.json",
+              "ext": ".json",
+              "mtime": 1593346308350.632
+            },
+            {
+              "file": "apps/shell-web-e2e/src/fixtures/example.json",
+              "ext": ".json",
+              "mtime": 1593346308351.3376
+            },
+            {
+              "file": "apps/shell-web-e2e/src/integration/app.spec.ts",
+              "ext": ".ts",
+              "mtime": 1593346308351.5994
+            },
+            {
+              "file": "apps/shell-web-e2e/src/plugins/index.js",
+              "ext": ".js",
+              "mtime": 1593346308352.027
+            },
+            {
+              "file": "apps/shell-web-e2e/src/support/app.po.ts",
+              "ext": ".ts",
+              "mtime": 1593346308352.3398
+            },
+            {
+              "file": "apps/shell-web-e2e/src/support/commands.ts",
+              "ext": ".ts",
+              "mtime": 1593346308352.6052
+            },
+            {
+              "file": "apps/shell-web-e2e/src/support/index.ts",
+              "ext": ".ts",
+              "mtime": 1593346308352.784
+            },
+            {
+              "file": "apps/shell-web-e2e/tsconfig.e2e.json",
+              "ext": ".json",
+              "mtime": 1593346308350.7986
+            },
+            {
+              "file": "apps/shell-web-e2e/tsconfig.json",
+              "ext": ".json",
+              "mtime": 1593346308350.995
+            }
+          ]
+        }
+      },
       "shell-ui-e2e": {
         "name": "shell-ui-e2e",
         "type": "e2e",
@@ -88,6 +178,192 @@
               "file": "apps/shell-ui-e2e/tsconfig.json",
               "ext": ".json",
               "mtime": 1593326511913.584
+            }
+          ]
+        }
+      },
+      "shell-web": {
+        "name": "shell-web",
+        "type": "app",
+        "data": {
+          "root": "apps/shell-web",
+          "sourceRoot": "apps/shell-web/src",
+          "projectType": "application",
+          "schematics": {},
+          "architect": {
+            "build": {
+              "builder": "@nrwl/web:build",
+              "options": {
+                "outputPath": "dist/apps/shell-web",
+                "index": "apps/shell-web/src/index.html",
+                "main": "apps/shell-web/src/main.ts",
+                "polyfills": "apps/shell-web/src/polyfills.ts",
+                "tsConfig": "apps/shell-web/tsconfig.app.json",
+                "assets": [
+                  "apps/shell-web/src/favicon.ico",
+                  "apps/shell-web/src/assets"
+                ],
+                "styles": [
+                  "apps/shell-web/src/styles.css"
+                ],
+                "scripts": []
+              },
+              "configurations": {
+                "production": {
+                  "fileReplacements": [
+                    {
+                      "replace": "apps/shell-web/src/environments/environment.ts",
+                      "with": "apps/shell-web/src/environments/environment.prod.ts"
+                    }
+                  ],
+                  "optimization": true,
+                  "outputHashing": "all",
+                  "sourceMap": false,
+                  "extractCss": true,
+                  "namedChunks": false,
+                  "extractLicenses": true,
+                  "vendorChunk": false,
+                  "budgets": [
+                    {
+                      "type": "initial",
+                      "maximumWarning": "2mb",
+                      "maximumError": "5mb"
+                    }
+                  ]
+                }
+              }
+            },
+            "serve": {
+              "builder": "@nrwl/web:dev-server",
+              "options": {
+                "buildTarget": "shell-web:build"
+              },
+              "configurations": {
+                "production": {
+                  "buildTarget": "shell-web:build:production"
+                }
+              }
+            },
+            "lint": {
+              "builder": "@nrwl/linter:lint",
+              "options": {
+                "linter": "eslint",
+                "tsConfig": [
+                  "apps/shell-web/tsconfig.app.json",
+                  "apps/shell-web/tsconfig.spec.json"
+                ],
+                "exclude": [
+                  "**/node_modules/**",
+                  "!apps/shell-web/**/*"
+                ]
+              }
+            },
+            "test": {
+              "builder": "@nrwl/jest:jest",
+              "options": {
+                "jestConfig": "apps/shell-web/jest.config.js",
+                "tsConfig": "apps/shell-web/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "apps/shell-web/src/test-setup.ts"
+              }
+            }
+          },
+          "tags": [],
+          "files": [
+            {
+              "file": "apps/shell-web/.babelrc",
+              "ext": "",
+              "mtime": 1593346308346.4172
+            },
+            {
+              "file": "apps/shell-web/.eslintrc",
+              "ext": "",
+              "mtime": 1593346308345.5667
+            },
+            {
+              "file": "apps/shell-web/browserslist",
+              "ext": "",
+              "mtime": 1593346308345.8157
+            },
+            {
+              "file": "apps/shell-web/jest.config.js",
+              "ext": ".js",
+              "mtime": 1593346308352.9539
+            },
+            {
+              "file": "apps/shell-web/src/app/app.element.css",
+              "ext": ".css",
+              "mtime": 1593346308348.2017
+            },
+            {
+              "file": "apps/shell-web/src/app/app.element.spec.ts",
+              "ext": ".ts",
+              "mtime": 1593346308348.5242
+            },
+            {
+              "file": "apps/shell-web/src/app/app.element.ts",
+              "ext": ".ts",
+              "mtime": 1593346674282.4563
+            },
+            {
+              "file": "apps/shell-web/src/assets/.gitkeep",
+              "ext": "",
+              "mtime": 1593346308349.3345
+            },
+            {
+              "file": "apps/shell-web/src/environments/environment.prod.ts",
+              "ext": ".ts",
+              "mtime": 1593346308349.8027
+            },
+            {
+              "file": "apps/shell-web/src/environments/environment.ts",
+              "ext": ".ts",
+              "mtime": 1593346308350.0742
+            },
+            {
+              "file": "apps/shell-web/src/favicon.ico",
+              "ext": ".ico",
+              "mtime": 1593346308346.6929
+            },
+            {
+              "file": "apps/shell-web/src/index.html",
+              "ext": ".html",
+              "mtime": 1593346308346.8882
+            },
+            {
+              "file": "apps/shell-web/src/main.ts",
+              "ext": ".ts",
+              "mtime": 1593346308347.0657
+            },
+            {
+              "file": "apps/shell-web/src/polyfills.ts",
+              "ext": ".ts",
+              "mtime": 1593346308347.3284
+            },
+            {
+              "file": "apps/shell-web/src/styles.css",
+              "ext": ".css",
+              "mtime": 1593346308347.6501
+            },
+            {
+              "file": "apps/shell-web/src/test-setup.ts",
+              "ext": ".ts",
+              "mtime": 1593346308353.2974
+            },
+            {
+              "file": "apps/shell-web/tsconfig.app.json",
+              "ext": ".json",
+              "mtime": 1593346308346.0554
+            },
+            {
+              "file": "apps/shell-web/tsconfig.json",
+              "ext": ".json",
+              "mtime": 1593346308346.24
+            },
+            {
+              "file": "apps/shell-web/tsconfig.spec.json",
+              "ext": ".json",
+              "mtime": 1593346308353.1228
             }
           ]
         }
@@ -367,6 +643,83 @@
           ]
         }
       },
+      "util": {
+        "name": "util",
+        "type": "lib",
+        "data": {
+          "root": "libs/util",
+          "sourceRoot": "libs/util/src",
+          "projectType": "library",
+          "schematics": {},
+          "architect": {
+            "lint": {
+              "builder": "@nrwl/linter:lint",
+              "options": {
+                "linter": "eslint",
+                "tsConfig": [
+                  "libs/util/tsconfig.lib.json",
+                  "libs/util/tsconfig.spec.json"
+                ],
+                "exclude": [
+                  "**/node_modules/**",
+                  "!libs/util/**/*"
+                ]
+              }
+            },
+            "test": {
+              "builder": "@nrwl/jest:jest",
+              "options": {
+                "jestConfig": "libs/util/jest.config.js",
+                "tsConfig": "libs/util/tsconfig.spec.json",
+                "passWithNoTests": true
+              }
+            }
+          },
+          "tags": [],
+          "files": [
+            {
+              "file": "libs/util/.eslintrc",
+              "ext": "",
+              "mtime": 1593346429614.5134
+            },
+            {
+              "file": "libs/util/README.md",
+              "ext": ".md",
+              "mtime": 1593346429614.789
+            },
+            {
+              "file": "libs/util/jest.config.js",
+              "ext": ".js",
+              "mtime": 1593346429616.401
+            },
+            {
+              "file": "libs/util/src/index.ts",
+              "ext": ".ts",
+              "mtime": 1593346429615.9902
+            },
+            {
+              "file": "libs/util/src/lib/util.ts",
+              "ext": ".ts",
+              "mtime": 1593346487272.2932
+            },
+            {
+              "file": "libs/util/tsconfig.json",
+              "ext": ".json",
+              "mtime": 1593346429615.0547
+            },
+            {
+              "file": "libs/util/tsconfig.lib.json",
+              "ext": ".json",
+              "mtime": 1593346429615.418
+            },
+            {
+              "file": "libs/util/tsconfig.spec.json",
+              "ext": ".json",
+              "mtime": 1593346429616.5925
+            }
+          ]
+        }
+      },
       "ui": {
         "name": "ui",
         "type": "lib",
@@ -509,7 +862,7 @@
             {
               "file": "libs/ui/src/lib/ui.spec.tsx",
               "ext": ".tsx",
-              "mtime": 1593342725552.6208
+              "mtime": 1593342777397.6973
             },
             {
               "file": "libs/ui/src/lib/ui.tsx",
@@ -896,6 +1249,18 @@
       }
     },
     "dependencies": {
+      "shell-web-e2e": [
+        {
+          "type": "implicit",
+          "source": "shell-web-e2e",
+          "target": "shell-web"
+        },
+        {
+          "type": "static",
+          "source": "shell-web-e2e",
+          "target": "npm:@nrwl/cypress"
+        }
+      ],
       "shell-ui-e2e": [
         {
           "type": "implicit",
@@ -906,6 +1271,18 @@
           "type": "static",
           "source": "shell-ui-e2e",
           "target": "npm:@nrwl/cypress"
+        }
+      ],
+      "shell-web": [
+        {
+          "type": "static",
+          "source": "shell-web",
+          "target": "util"
+        },
+        {
+          "type": "static",
+          "source": "shell-web",
+          "target": "npm:document-register-element"
         }
       ],
       "shell-ui": [
@@ -942,6 +1319,7 @@
           "target": "npm:@nrwl/cypress"
         }
       ],
+      "util": [],
       "ui": [
         {
           "type": "static",
@@ -1007,6 +1385,58 @@
     }
   },
   "fileMap": {
+    "shell-web-e2e": [
+      {
+        "file": "apps/shell-web-e2e/.eslintrc",
+        "ext": "",
+        "mtime": 1593346308350.4348
+      },
+      {
+        "file": "apps/shell-web-e2e/cypress.json",
+        "ext": ".json",
+        "mtime": 1593346308350.632
+      },
+      {
+        "file": "apps/shell-web-e2e/src/fixtures/example.json",
+        "ext": ".json",
+        "mtime": 1593346308351.3376
+      },
+      {
+        "file": "apps/shell-web-e2e/src/integration/app.spec.ts",
+        "ext": ".ts",
+        "mtime": 1593346308351.5994
+      },
+      {
+        "file": "apps/shell-web-e2e/src/plugins/index.js",
+        "ext": ".js",
+        "mtime": 1593346308352.027
+      },
+      {
+        "file": "apps/shell-web-e2e/src/support/app.po.ts",
+        "ext": ".ts",
+        "mtime": 1593346308352.3398
+      },
+      {
+        "file": "apps/shell-web-e2e/src/support/commands.ts",
+        "ext": ".ts",
+        "mtime": 1593346308352.6052
+      },
+      {
+        "file": "apps/shell-web-e2e/src/support/index.ts",
+        "ext": ".ts",
+        "mtime": 1593346308352.784
+      },
+      {
+        "file": "apps/shell-web-e2e/tsconfig.e2e.json",
+        "ext": ".json",
+        "mtime": 1593346308350.7986
+      },
+      {
+        "file": "apps/shell-web-e2e/tsconfig.json",
+        "ext": ".json",
+        "mtime": 1593346308350.995
+      }
+    ],
     "shell-ui-e2e": [
       {
         "file": "apps/shell-ui-e2e/.eslintrc",
@@ -1057,6 +1487,103 @@
         "file": "apps/shell-ui-e2e/tsconfig.json",
         "ext": ".json",
         "mtime": 1593326511913.584
+      }
+    ],
+    "shell-web": [
+      {
+        "file": "apps/shell-web/.babelrc",
+        "ext": "",
+        "mtime": 1593346308346.4172
+      },
+      {
+        "file": "apps/shell-web/.eslintrc",
+        "ext": "",
+        "mtime": 1593346308345.5667
+      },
+      {
+        "file": "apps/shell-web/browserslist",
+        "ext": "",
+        "mtime": 1593346308345.8157
+      },
+      {
+        "file": "apps/shell-web/jest.config.js",
+        "ext": ".js",
+        "mtime": 1593346308352.9539
+      },
+      {
+        "file": "apps/shell-web/src/app/app.element.css",
+        "ext": ".css",
+        "mtime": 1593346308348.2017
+      },
+      {
+        "file": "apps/shell-web/src/app/app.element.spec.ts",
+        "ext": ".ts",
+        "mtime": 1593346308348.5242
+      },
+      {
+        "file": "apps/shell-web/src/app/app.element.ts",
+        "ext": ".ts",
+        "mtime": 1593346674282.4563
+      },
+      {
+        "file": "apps/shell-web/src/assets/.gitkeep",
+        "ext": "",
+        "mtime": 1593346308349.3345
+      },
+      {
+        "file": "apps/shell-web/src/environments/environment.prod.ts",
+        "ext": ".ts",
+        "mtime": 1593346308349.8027
+      },
+      {
+        "file": "apps/shell-web/src/environments/environment.ts",
+        "ext": ".ts",
+        "mtime": 1593346308350.0742
+      },
+      {
+        "file": "apps/shell-web/src/favicon.ico",
+        "ext": ".ico",
+        "mtime": 1593346308346.6929
+      },
+      {
+        "file": "apps/shell-web/src/index.html",
+        "ext": ".html",
+        "mtime": 1593346308346.8882
+      },
+      {
+        "file": "apps/shell-web/src/main.ts",
+        "ext": ".ts",
+        "mtime": 1593346308347.0657
+      },
+      {
+        "file": "apps/shell-web/src/polyfills.ts",
+        "ext": ".ts",
+        "mtime": 1593346308347.3284
+      },
+      {
+        "file": "apps/shell-web/src/styles.css",
+        "ext": ".css",
+        "mtime": 1593346308347.6501
+      },
+      {
+        "file": "apps/shell-web/src/test-setup.ts",
+        "ext": ".ts",
+        "mtime": 1593346308353.2974
+      },
+      {
+        "file": "apps/shell-web/tsconfig.app.json",
+        "ext": ".json",
+        "mtime": 1593346308346.0554
+      },
+      {
+        "file": "apps/shell-web/tsconfig.json",
+        "ext": ".json",
+        "mtime": 1593346308346.24
+      },
+      {
+        "file": "apps/shell-web/tsconfig.spec.json",
+        "ext": ".json",
+        "mtime": 1593346308353.1228
       }
     ],
     "shell-ui": [
@@ -1208,6 +1735,48 @@
         "mtime": 1593335312377.1782
       }
     ],
+    "util": [
+      {
+        "file": "libs/util/.eslintrc",
+        "ext": "",
+        "mtime": 1593346429614.5134
+      },
+      {
+        "file": "libs/util/README.md",
+        "ext": ".md",
+        "mtime": 1593346429614.789
+      },
+      {
+        "file": "libs/util/jest.config.js",
+        "ext": ".js",
+        "mtime": 1593346429616.401
+      },
+      {
+        "file": "libs/util/src/index.ts",
+        "ext": ".ts",
+        "mtime": 1593346429615.9902
+      },
+      {
+        "file": "libs/util/src/lib/util.ts",
+        "ext": ".ts",
+        "mtime": 1593346487272.2932
+      },
+      {
+        "file": "libs/util/tsconfig.json",
+        "ext": ".json",
+        "mtime": 1593346429615.0547
+      },
+      {
+        "file": "libs/util/tsconfig.lib.json",
+        "ext": ".json",
+        "mtime": 1593346429615.418
+      },
+      {
+        "file": "libs/util/tsconfig.spec.json",
+        "ext": ".json",
+        "mtime": 1593346429616.5925
+      }
+    ],
     "ui": [
       {
         "file": "libs/ui/.babelrc",
@@ -1287,7 +1856,7 @@
       {
         "file": "libs/ui/src/lib/ui.spec.tsx",
         "ext": ".tsx",
-        "mtime": 1593342725552.6208
+        "mtime": 1593342777397.6973
       },
       {
         "file": "libs/ui/src/lib/ui.tsx",
