@@ -8,4 +8,8 @@ describe(" Ui", () => {
     const { baseElement } = render(<Ui />);
     expect(baseElement).toBeTruthy();
   });
+
+  it("should test dummy test", () => {
+    expect(true).toBeTruthy();
+  });
 });

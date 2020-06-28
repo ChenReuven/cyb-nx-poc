@@ -288,6 +288,85 @@
           ]
         }
       },
+      "ui-e2e": {
+        "name": "ui-e2e",
+        "type": "e2e",
+        "data": {
+          "root": "apps/ui-e2e",
+          "sourceRoot": "apps/ui-e2e/src",
+          "projectType": "application",
+          "architect": {
+            "e2e": {
+              "builder": "@nrwl/cypress:cypress",
+              "options": {
+                "cypressConfig": "apps/ui-e2e/cypress.json",
+                "tsConfig": "apps/ui-e2e/tsconfig.e2e.json",
+                "devServerTarget": "ui:storybook"
+              },
+              "configurations": {
+                "ci": {
+                  "devServerTarget": "ui:storybook:ci"
+                }
+              }
+            },
+            "lint": {
+              "builder": "@angular-devkit/build-angular:tslint",
+              "options": {
+                "tsConfig": [
+                  "apps/ui-e2e/tsconfig.e2e.json"
+                ],
+                "exclude": [
+                  "**/node_modules/**",
+                  "!apps/ui-e2e/**/*"
+                ]
+              }
+            }
+          },
+          "tags": [],
+          "files": [
+            {
+              "file": "apps/ui-e2e/cypress.json",
+              "ext": ".json",
+              "mtime": 1593335312377.4458
+            },
+            {
+              "file": "apps/ui-e2e/src/fixtures/example.json",
+              "ext": ".json",
+              "mtime": 1593335312378.139
+            },
+            {
+              "file": "apps/ui-e2e/src/plugins/index.js",
+              "ext": ".js",
+              "mtime": 1593335312378.3447
+            },
+            {
+              "file": "apps/ui-e2e/src/support/commands.js",
+              "ext": ".js",
+              "mtime": 1593335312378.6821
+            },
+            {
+              "file": "apps/ui-e2e/src/support/index.js",
+              "ext": ".js",
+              "mtime": 1593335312378.8174
+            },
+            {
+              "file": "apps/ui-e2e/tsconfig.e2e.json",
+              "ext": ".json",
+              "mtime": 1593335312377.6448
+            },
+            {
+              "file": "apps/ui-e2e/tsconfig.json",
+              "ext": ".json",
+              "mtime": 1593335312377.8213
+            },
+            {
+              "file": "apps/ui-e2e/tslint.json",
+              "ext": ".json",
+              "mtime": 1593335312377.1782
+            }
+          ]
+        }
+      },
       "ui": {
         "name": "ui",
         "type": "lib",
@@ -318,6 +397,36 @@
                 "tsConfig": "libs/ui/tsconfig.spec.json",
                 "passWithNoTests": true
               }
+            },
+            "storybook": {
+              "builder": "@nrwl/storybook:storybook",
+              "options": {
+                "uiFramework": "@storybook/react",
+                "port": 4400,
+                "config": {
+                  "configFolder": "libs/ui/.storybook"
+                }
+              },
+              "configurations": {
+                "ci": {
+                  "quiet": true
+                }
+              }
+            },
+            "build-storybook": {
+              "builder": "@nrwl/storybook:build",
+              "options": {
+                "uiFramework": "@storybook/react",
+                "outputPath": "dist/storybook/ui",
+                "config": {
+                  "configFolder": "libs/ui/.storybook"
+                }
+              },
+              "configurations": {
+                "ci": {
+                  "quiet": true
+                }
+              }
             }
           },
           "tags": [],
@@ -331,6 +440,26 @@
               "file": "libs/ui/.eslintrc",
               "ext": "",
               "mtime": 1593332744956.91
+            },
+            {
+              "file": "libs/ui/.storybook/addons.js",
+              "ext": ".js",
+              "mtime": 1593335312376.1191
+            },
+            {
+              "file": "libs/ui/.storybook/config.js",
+              "ext": ".js",
+              "mtime": 1593335312376.2756
+            },
+            {
+              "file": "libs/ui/.storybook/tsconfig.json",
+              "ext": ".json",
+              "mtime": 1593335312375.9744
+            },
+            {
+              "file": "libs/ui/.storybook/webpack.config.js",
+              "ext": ".js",
+              "mtime": 1593335312376.4253
             },
             {
               "file": "libs/ui/README.md",
@@ -363,9 +492,14 @@
               "mtime": 1593332808214.381
             },
             {
+              "file": "libs/ui/src/lib/test/test.stories.tsx",
+              "ext": ".tsx",
+              "mtime": 1593337246720.0103
+            },
+            {
               "file": "libs/ui/src/lib/test/test.tsx",
               "ext": ".tsx",
-              "mtime": 1593332808214.6619
+              "mtime": 1593337221076.541
             },
             {
               "file": "libs/ui/src/lib/ui.css",
@@ -375,7 +509,7 @@
             {
               "file": "libs/ui/src/lib/ui.spec.tsx",
               "ext": ".tsx",
-              "mtime": 1593332744960.405
+              "mtime": 1593342725552.6208
             },
             {
               "file": "libs/ui/src/lib/ui.tsx",
@@ -390,7 +524,7 @@
             {
               "file": "libs/ui/tsconfig.lib.json",
               "ext": ".json",
-              "mtime": 1593332744957.486
+              "mtime": 1593335312379.3496
             },
             {
               "file": "libs/ui/tsconfig.spec.json",
@@ -427,129 +561,39 @@
           "files": []
         }
       },
-      "npm:@nrwl/workspace": {
+      "npm:@babel/core": {
         "type": "npm",
-        "name": "npm:@nrwl/workspace",
+        "name": "npm:@babel/core",
         "data": {
-          "version": "9.5.0-rc.1",
-          "packageName": "@nrwl/workspace",
+          "version": "^7.10.3",
+          "packageName": "@babel/core",
           "files": []
         }
       },
-      "npm:@types/node": {
+      "npm:@babel/preset-env": {
         "type": "npm",
-        "name": "npm:@types/node",
+        "name": "npm:@babel/preset-env",
         "data": {
-          "version": "~8.9.4",
-          "packageName": "@types/node",
+          "version": "7.9.6",
+          "packageName": "@babel/preset-env",
           "files": []
         }
       },
-      "npm:dotenv": {
+      "npm:@babel/preset-react": {
         "type": "npm",
-        "name": "npm:dotenv",
+        "name": "npm:@babel/preset-react",
         "data": {
-          "version": "6.2.0",
-          "packageName": "dotenv",
+          "version": "7.9.4",
+          "packageName": "@babel/preset-react",
           "files": []
         }
       },
-      "npm:ts-node": {
+      "npm:@babel/preset-typescript": {
         "type": "npm",
-        "name": "npm:ts-node",
+        "name": "npm:@babel/preset-typescript",
         "data": {
-          "version": "~7.0.0",
-          "packageName": "ts-node",
-          "files": []
-        }
-      },
-      "npm:tslint": {
-        "type": "npm",
-        "name": "npm:tslint",
-        "data": {
-          "version": "~6.0.0",
-          "packageName": "tslint",
-          "files": []
-        }
-      },
-      "npm:eslint": {
-        "type": "npm",
-        "name": "npm:eslint",
-        "data": {
-          "version": "6.8.0",
-          "packageName": "eslint",
-          "files": []
-        }
-      },
-      "npm:typescript": {
-        "type": "npm",
-        "name": "npm:typescript",
-        "data": {
-          "version": "~3.8.3",
-          "packageName": "typescript",
-          "files": []
-        }
-      },
-      "npm:prettier": {
-        "type": "npm",
-        "name": "npm:prettier",
-        "data": {
-          "version": "2.0.4",
-          "packageName": "prettier",
-          "files": []
-        }
-      },
-      "npm:@nrwl/react": {
-        "type": "npm",
-        "name": "npm:@nrwl/react",
-        "data": {
-          "version": "9.5.0-rc.1",
-          "packageName": "@nrwl/react",
-          "files": []
-        }
-      },
-      "npm:@nrwl/jest": {
-        "type": "npm",
-        "name": "npm:@nrwl/jest",
-        "data": {
-          "version": "9.5.0-rc.1",
-          "packageName": "@nrwl/jest",
-          "files": []
-        }
-      },
-      "npm:jest": {
-        "type": "npm",
-        "name": "npm:jest",
-        "data": {
-          "version": "25.2.3",
-          "packageName": "jest",
-          "files": []
-        }
-      },
-      "npm:@types/jest": {
-        "type": "npm",
-        "name": "npm:@types/jest",
-        "data": {
-          "version": "25.1.4",
-          "packageName": "@types/jest",
-          "files": []
-        }
-      },
-      "npm:ts-jest": {
-        "type": "npm",
-        "name": "npm:ts-jest",
-        "data": {
-          "version": "25.2.1",
-          "packageName": "ts-jest",
-          "files": []
-        }
-      },
-      "npm:cypress": {
-        "type": "npm",
-        "name": "npm:cypress",
-        "data": {
-          "version": "^4.1.0",
-          "packageName": "cypress",
+          "version": "7.9.0",
+          "packageName": "@babel/preset-typescript",
           "files": []
         }
       },
@@ -562,12 +606,84 @@
           "files": []
         }
       },
+      "npm:@nrwl/eslint-plugin-nx": {
+        "type": "npm",
+        "name": "npm:@nrwl/eslint-plugin-nx",
+        "data": {
+          "version": "9.5.0-rc.1",
+          "packageName": "@nrwl/eslint-plugin-nx",
+          "files": []
+        }
+      },
+      "npm:@nrwl/jest": {
+        "type": "npm",
+        "name": "npm:@nrwl/jest",
+        "data": {
+          "version": "9.5.0-rc.1",
+          "packageName": "@nrwl/jest",
+          "files": []
+        }
+      },
+      "npm:@nrwl/react": {
+        "type": "npm",
+        "name": "npm:@nrwl/react",
+        "data": {
+          "version": "9.5.0-rc.1",
+          "packageName": "@nrwl/react",
+          "files": []
+        }
+      },
+      "npm:@nrwl/storybook": {
+        "type": "npm",
+        "name": "npm:@nrwl/storybook",
+        "data": {
+          "version": "^9.4.5",
+          "packageName": "@nrwl/storybook",
+          "files": []
+        }
+      },
       "npm:@nrwl/web": {
         "type": "npm",
         "name": "npm:@nrwl/web",
         "data": {
           "version": "9.5.0-rc.1",
           "packageName": "@nrwl/web",
+          "files": []
+        }
+      },
+      "npm:@nrwl/workspace": {
+        "type": "npm",
+        "name": "npm:@nrwl/workspace",
+        "data": {
+          "version": "9.5.0-rc.1",
+          "packageName": "@nrwl/workspace",
+          "files": []
+        }
+      },
+      "npm:@testing-library/react": {
+        "type": "npm",
+        "name": "npm:@testing-library/react",
+        "data": {
+          "version": "10.4.1",
+          "packageName": "@testing-library/react",
+          "files": []
+        }
+      },
+      "npm:@types/jest": {
+        "type": "npm",
+        "name": "npm:@types/jest",
+        "data": {
+          "version": "25.1.4",
+          "packageName": "@types/jest",
+          "files": []
+        }
+      },
+      "npm:@types/node": {
+        "type": "npm",
+        "name": "npm:@types/node",
+        "data": {
+          "version": "~8.9.4",
+          "packageName": "@types/node",
           "files": []
         }
       },
@@ -589,21 +705,12 @@
           "files": []
         }
       },
-      "npm:@testing-library/react": {
+      "npm:@typescript-eslint/eslint-plugin": {
         "type": "npm",
-        "name": "npm:@testing-library/react",
+        "name": "npm:@typescript-eslint/eslint-plugin",
         "data": {
-          "version": "10.4.1",
-          "packageName": "@testing-library/react",
-          "files": []
-        }
-      },
-      "npm:@nrwl/eslint-plugin-nx": {
-        "type": "npm",
-        "name": "npm:@nrwl/eslint-plugin-nx",
-        "data": {
-          "version": "9.5.0-rc.1",
-          "packageName": "@nrwl/eslint-plugin-nx",
+          "version": "2.19.2",
+          "packageName": "@typescript-eslint/eslint-plugin",
           "files": []
         }
       },
@@ -616,12 +723,39 @@
           "files": []
         }
       },
-      "npm:@typescript-eslint/eslint-plugin": {
+      "npm:babel-jest": {
         "type": "npm",
-        "name": "npm:@typescript-eslint/eslint-plugin",
+        "name": "npm:babel-jest",
         "data": {
-          "version": "2.19.2",
-          "packageName": "@typescript-eslint/eslint-plugin",
+          "version": "25.1.0",
+          "packageName": "babel-jest",
+          "files": []
+        }
+      },
+      "npm:cypress": {
+        "type": "npm",
+        "name": "npm:cypress",
+        "data": {
+          "version": "^4.1.0",
+          "packageName": "cypress",
+          "files": []
+        }
+      },
+      "npm:dotenv": {
+        "type": "npm",
+        "name": "npm:dotenv",
+        "data": {
+          "version": "6.2.0",
+          "packageName": "dotenv",
+          "files": []
+        }
+      },
+      "npm:eslint": {
+        "type": "npm",
+        "name": "npm:eslint",
+        "data": {
+          "version": "6.8.0",
+          "packageName": "eslint",
           "files": []
         }
       },
@@ -631,6 +765,15 @@
         "data": {
           "version": "6.0.0",
           "packageName": "eslint-config-prettier",
+          "files": []
+        }
+      },
+      "npm:eslint-plugin-cypress": {
+        "type": "npm",
+        "name": "npm:eslint-plugin-cypress",
+        "data": {
+          "version": "^2.10.3",
+          "packageName": "eslint-plugin-cypress",
           "files": []
         }
       },
@@ -670,57 +813,84 @@
           "files": []
         }
       },
-      "npm:eslint-plugin-cypress": {
+      "npm:jest": {
         "type": "npm",
-        "name": "npm:eslint-plugin-cypress",
+        "name": "npm:jest",
         "data": {
-          "version": "^2.10.3",
-          "packageName": "eslint-plugin-cypress",
+          "version": "25.2.3",
+          "packageName": "jest",
           "files": []
         }
       },
-      "npm:@babel/core": {
+      "npm:prettier": {
         "type": "npm",
-        "name": "npm:@babel/core",
+        "name": "npm:prettier",
         "data": {
-          "version": "7.9.6",
-          "packageName": "@babel/core",
+          "version": "2.0.4",
+          "packageName": "prettier",
           "files": []
         }
       },
-      "npm:@babel/preset-env": {
+      "npm:ts-jest": {
         "type": "npm",
-        "name": "npm:@babel/preset-env",
+        "name": "npm:ts-jest",
         "data": {
-          "version": "7.9.6",
-          "packageName": "@babel/preset-env",
+          "version": "25.2.1",
+          "packageName": "ts-jest",
           "files": []
         }
       },
-      "npm:@babel/preset-typescript": {
+      "npm:ts-node": {
         "type": "npm",
-        "name": "npm:@babel/preset-typescript",
+        "name": "npm:ts-node",
         "data": {
-          "version": "7.9.0",
-          "packageName": "@babel/preset-typescript",
+          "version": "~7.0.0",
+          "packageName": "ts-node",
           "files": []
         }
       },
-      "npm:@babel/preset-react": {
+      "npm:tslint": {
         "type": "npm",
-        "name": "npm:@babel/preset-react",
+        "name": "npm:tslint",
         "data": {
-          "version": "7.9.4",
-          "packageName": "@babel/preset-react",
+          "version": "~6.0.0",
+          "packageName": "tslint",
           "files": []
         }
       },
-      "npm:babel-jest": {
+      "npm:typescript": {
         "type": "npm",
-        "name": "npm:babel-jest",
+        "name": "npm:typescript",
         "data": {
-          "version": "25.1.0",
-          "packageName": "babel-jest",
+          "version": "~3.8.3",
+          "packageName": "typescript",
+          "files": []
+        }
+      },
+      "npm:@storybook/addon-knobs": {
+        "type": "npm",
+        "name": "npm:@storybook/addon-knobs",
+        "data": {
+          "version": "5.3.9",
+          "packageName": "@storybook/addon-knobs",
+          "files": []
+        }
+      },
+      "npm:@storybook/react": {
+        "type": "npm",
+        "name": "npm:@storybook/react",
+        "data": {
+          "version": "5.3.9",
+          "packageName": "@storybook/react",
+          "files": []
+        }
+      },
+      "npm:babel-loader": {
+        "type": "npm",
+        "name": "npm:babel-loader",
+        "data": {
+          "version": "8.1.0",
+          "packageName": "babel-loader",
           "files": []
         }
       }
@@ -760,7 +930,29 @@
           "target": "npm:react-dom"
         }
       ],
+      "ui-e2e": [
+        {
+          "type": "implicit",
+          "source": "ui-e2e",
+          "target": "ui"
+        },
+        {
+          "type": "static",
+          "source": "ui-e2e",
+          "target": "npm:@nrwl/cypress"
+        }
+      ],
       "ui": [
+        {
+          "type": "static",
+          "source": "ui",
+          "target": "npm:@storybook/react"
+        },
+        {
+          "type": "static",
+          "source": "ui",
+          "target": "npm:@storybook/addon-knobs"
+        },
         {
           "type": "static",
           "source": "ui",
@@ -775,39 +967,43 @@
       "npm:document-register-element": [],
       "npm:react": [],
       "npm:react-dom": [],
-      "npm:@nrwl/workspace": [],
-      "npm:@types/node": [],
-      "npm:dotenv": [],
-      "npm:ts-node": [],
-      "npm:tslint": [],
-      "npm:eslint": [],
-      "npm:typescript": [],
-      "npm:prettier": [],
-      "npm:@nrwl/react": [],
-      "npm:@nrwl/jest": [],
-      "npm:jest": [],
-      "npm:@types/jest": [],
-      "npm:ts-jest": [],
-      "npm:cypress": [],
+      "npm:@babel/core": [],
+      "npm:@babel/preset-env": [],
+      "npm:@babel/preset-react": [],
+      "npm:@babel/preset-typescript": [],
       "npm:@nrwl/cypress": [],
+      "npm:@nrwl/eslint-plugin-nx": [],
+      "npm:@nrwl/jest": [],
+      "npm:@nrwl/react": [],
+      "npm:@nrwl/storybook": [],
       "npm:@nrwl/web": [],
+      "npm:@nrwl/workspace": [],
+      "npm:@testing-library/react": [],
+      "npm:@types/jest": [],
+      "npm:@types/node": [],
       "npm:@types/react": [],
       "npm:@types/react-dom": [],
-      "npm:@testing-library/react": [],
-      "npm:@nrwl/eslint-plugin-nx": [],
-      "npm:@typescript-eslint/parser": [],
       "npm:@typescript-eslint/eslint-plugin": [],
+      "npm:@typescript-eslint/parser": [],
+      "npm:babel-jest": [],
+      "npm:cypress": [],
+      "npm:dotenv": [],
+      "npm:eslint": [],
       "npm:eslint-config-prettier": [],
+      "npm:eslint-plugin-cypress": [],
       "npm:eslint-plugin-import": [],
       "npm:eslint-plugin-jsx-a11y": [],
       "npm:eslint-plugin-react": [],
       "npm:eslint-plugin-react-hooks": [],
-      "npm:eslint-plugin-cypress": [],
-      "npm:@babel/core": [],
-      "npm:@babel/preset-env": [],
-      "npm:@babel/preset-typescript": [],
-      "npm:@babel/preset-react": [],
-      "npm:babel-jest": []
+      "npm:jest": [],
+      "npm:prettier": [],
+      "npm:ts-jest": [],
+      "npm:ts-node": [],
+      "npm:tslint": [],
+      "npm:typescript": [],
+      "npm:@storybook/addon-knobs": [],
+      "npm:@storybook/react": [],
+      "npm:babel-loader": []
     }
   },
   "fileMap": {
@@ -970,6 +1166,48 @@
         "mtime": 1593326511916.2776
       }
     ],
+    "ui-e2e": [
+      {
+        "file": "apps/ui-e2e/cypress.json",
+        "ext": ".json",
+        "mtime": 1593335312377.4458
+      },
+      {
+        "file": "apps/ui-e2e/src/fixtures/example.json",
+        "ext": ".json",
+        "mtime": 1593335312378.139
+      },
+      {
+        "file": "apps/ui-e2e/src/plugins/index.js",
+        "ext": ".js",
+        "mtime": 1593335312378.3447
+      },
+      {
+        "file": "apps/ui-e2e/src/support/commands.js",
+        "ext": ".js",
+        "mtime": 1593335312378.6821
+      },
+      {
+        "file": "apps/ui-e2e/src/support/index.js",
+        "ext": ".js",
+        "mtime": 1593335312378.8174
+      },
+      {
+        "file": "apps/ui-e2e/tsconfig.e2e.json",
+        "ext": ".json",
+        "mtime": 1593335312377.6448
+      },
+      {
+        "file": "apps/ui-e2e/tsconfig.json",
+        "ext": ".json",
+        "mtime": 1593335312377.8213
+      },
+      {
+        "file": "apps/ui-e2e/tslint.json",
+        "ext": ".json",
+        "mtime": 1593335312377.1782
+      }
+    ],
     "ui": [
       {
         "file": "libs/ui/.babelrc",
@@ -980,6 +1218,26 @@
         "file": "libs/ui/.eslintrc",
         "ext": "",
         "mtime": 1593332744956.91
+      },
+      {
+        "file": "libs/ui/.storybook/addons.js",
+        "ext": ".js",
+        "mtime": 1593335312376.1191
+      },
+      {
+        "file": "libs/ui/.storybook/config.js",
+        "ext": ".js",
+        "mtime": 1593335312376.2756
+      },
+      {
+        "file": "libs/ui/.storybook/tsconfig.json",
+        "ext": ".json",
+        "mtime": 1593335312375.9744
+      },
+      {
+        "file": "libs/ui/.storybook/webpack.config.js",
+        "ext": ".js",
+        "mtime": 1593335312376.4253
       },
       {
         "file": "libs/ui/README.md",
@@ -1012,9 +1270,14 @@
         "mtime": 1593332808214.381
       },
       {
+        "file": "libs/ui/src/lib/test/test.stories.tsx",
+        "ext": ".tsx",
+        "mtime": 1593337246720.0103
+      },
+      {
         "file": "libs/ui/src/lib/test/test.tsx",
         "ext": ".tsx",
-        "mtime": 1593332808214.6619
+        "mtime": 1593337221076.541
       },
       {
         "file": "libs/ui/src/lib/ui.css",
@@ -1024,7 +1287,7 @@
       {
         "file": "libs/ui/src/lib/ui.spec.tsx",
         "ext": ".tsx",
-        "mtime": 1593332744960.405
+        "mtime": 1593342725552.6208
       },
       {
         "file": "libs/ui/src/lib/ui.tsx",
@@ -1039,7 +1302,7 @@
       {
         "file": "libs/ui/tsconfig.lib.json",
         "ext": ".json",
-        "mtime": 1593332744957.486
+        "mtime": 1593335312379.3496
       },
       {
         "file": "libs/ui/tsconfig.spec.json",
