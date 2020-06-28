@@ -1,0 +1,845 @@
+{
+  "version": "1",
+  "projectGraph": {
+    "nodes": {
+      "shell-ui-e2e": {
+        "name": "shell-ui-e2e",
+        "type": "e2e",
+        "data": {
+          "root": "apps/shell-ui-e2e",
+          "sourceRoot": "apps/shell-ui-e2e/src",
+          "projectType": "application",
+          "architect": {
+            "e2e": {
+              "builder": "@nrwl/cypress:cypress",
+              "options": {
+                "cypressConfig": "apps/shell-ui-e2e/cypress.json",
+                "tsConfig": "apps/shell-ui-e2e/tsconfig.e2e.json",
+                "devServerTarget": "shell-ui:serve"
+              },
+              "configurations": {
+                "production": {
+                  "devServerTarget": "shell-ui:serve:production"
+                }
+              }
+            },
+            "lint": {
+              "builder": "@nrwl/linter:lint",
+              "options": {
+                "linter": "eslint",
+                "tsConfig": [
+                  "apps/shell-ui-e2e/tsconfig.e2e.json"
+                ],
+                "exclude": [
+                  "**/node_modules/**",
+                  "!apps/shell-ui-e2e/**/*"
+                ]
+              }
+            }
+          },
+          "tags": [],
+          "files": [
+            {
+              "file": "apps/shell-ui-e2e/.eslintrc",
+              "ext": "",
+              "mtime": 1593326511913.1323
+            },
+            {
+              "file": "apps/shell-ui-e2e/cypress.json",
+              "ext": ".json",
+              "mtime": 1593326511913.2803
+            },
+            {
+              "file": "apps/shell-ui-e2e/src/fixtures/example.json",
+              "ext": ".json",
+              "mtime": 1593326511914.347
+            },
+            {
+              "file": "apps/shell-ui-e2e/src/integration/app.spec.ts",
+              "ext": ".ts",
+              "mtime": 1593326511914.6616
+            },
+            {
+              "file": "apps/shell-ui-e2e/src/plugins/index.js",
+              "ext": ".js",
+              "mtime": 1593326511914.9543
+            },
+            {
+              "file": "apps/shell-ui-e2e/src/support/app.po.ts",
+              "ext": ".ts",
+              "mtime": 1593326511915.1619
+            },
+            {
+              "file": "apps/shell-ui-e2e/src/support/commands.ts",
+              "ext": ".ts",
+              "mtime": 1593326511915.3066
+            },
+            {
+              "file": "apps/shell-ui-e2e/src/support/index.ts",
+              "ext": ".ts",
+              "mtime": 1593326511915.572
+            },
+            {
+              "file": "apps/shell-ui-e2e/tsconfig.e2e.json",
+              "ext": ".json",
+              "mtime": 1593326511913.427
+            },
+            {
+              "file": "apps/shell-ui-e2e/tsconfig.json",
+              "ext": ".json",
+              "mtime": 1593326511913.584
+            }
+          ]
+        }
+      },
+      "shell-ui": {
+        "name": "shell-ui",
+        "type": "app",
+        "data": {
+          "root": "apps/shell-ui",
+          "sourceRoot": "apps/shell-ui/src",
+          "projectType": "application",
+          "schematics": {},
+          "architect": {
+            "build": {
+              "builder": "@nrwl/web:build",
+              "options": {
+                "outputPath": "dist/apps/shell-ui",
+                "index": "apps/shell-ui/src/index.html",
+                "main": "apps/shell-ui/src/main.tsx",
+                "polyfills": "apps/shell-ui/src/polyfills.ts",
+                "tsConfig": "apps/shell-ui/tsconfig.app.json",
+                "assets": [
+                  "apps/shell-ui/src/favicon.ico",
+                  "apps/shell-ui/src/assets"
+                ],
+                "styles": [
+                  "apps/shell-ui/src/styles.css"
+                ],
+                "scripts": [],
+                "webpackConfig": "@nrwl/react/plugins/webpack"
+              },
+              "configurations": {
+                "production": {
+                  "fileReplacements": [
+                    {
+                      "replace": "apps/shell-ui/src/environments/environment.ts",
+                      "with": "apps/shell-ui/src/environments/environment.prod.ts"
+                    }
+                  ],
+                  "optimization": true,
+                  "outputHashing": "all",
+                  "sourceMap": false,
+                  "extractCss": true,
+                  "namedChunks": false,
+                  "extractLicenses": true,
+                  "vendorChunk": false,
+                  "budgets": [
+                    {
+                      "type": "initial",
+                      "maximumWarning": "2mb",
+                      "maximumError": "5mb"
+                    }
+                  ]
+                }
+              }
+            },
+            "serve": {
+              "builder": "@nrwl/web:dev-server",
+              "options": {
+                "buildTarget": "shell-ui:build"
+              },
+              "configurations": {
+                "production": {
+                  "buildTarget": "shell-ui:build:production"
+                }
+              }
+            },
+            "lint": {
+              "builder": "@nrwl/linter:lint",
+              "options": {
+                "linter": "eslint",
+                "tsConfig": [
+                  "apps/shell-ui/tsconfig.app.json",
+                  "apps/shell-ui/tsconfig.spec.json"
+                ],
+                "exclude": [
+                  "**/node_modules/**",
+                  "!apps/shell-ui/**/*"
+                ]
+              }
+            },
+            "test": {
+              "builder": "@nrwl/jest:jest",
+              "options": {
+                "jestConfig": "apps/shell-ui/jest.config.js",
+                "tsConfig": "apps/shell-ui/tsconfig.spec.json",
+                "passWithNoTests": true
+              }
+            }
+          },
+          "tags": [],
+          "files": [
+            {
+              "file": "apps/shell-ui/.babelrc",
+              "ext": "",
+              "mtime": 1593326511910.007
+            },
+            {
+              "file": "apps/shell-ui/.browserslistrc",
+              "ext": "",
+              "mtime": 1593326511910.154
+            },
+            {
+              "file": "apps/shell-ui/.eslintrc",
+              "ext": "",
+              "mtime": 1593326511909.697
+            },
+            {
+              "file": "apps/shell-ui/babel-jest.config.json",
+              "ext": ".json",
+              "mtime": 1593326511915.8096
+            },
+            {
+              "file": "apps/shell-ui/jest.config.js",
+              "ext": ".js",
+              "mtime": 1593326511916.0906
+            },
+            {
+              "file": "apps/shell-ui/src/app/app.css",
+              "ext": ".css",
+              "mtime": 1593326511912.025
+            },
+            {
+              "file": "apps/shell-ui/src/app/app.spec.tsx",
+              "ext": ".tsx",
+              "mtime": 1593326511912.1936
+            },
+            {
+              "file": "apps/shell-ui/src/app/app.tsx",
+              "ext": ".tsx",
+              "mtime": 1593326511912.354
+            },
+            {
+              "file": "apps/shell-ui/src/app/logo.svg",
+              "ext": ".svg",
+              "mtime": 1593326511911.378
+            },
+            {
+              "file": "apps/shell-ui/src/app/star.svg",
+              "ext": ".svg",
+              "mtime": 1593326511911.8342
+            },
+            {
+              "file": "apps/shell-ui/src/assets/.gitkeep",
+              "ext": "",
+              "mtime": 1593326511912.534
+            },
+            {
+              "file": "apps/shell-ui/src/environments/environment.prod.ts",
+              "ext": ".ts",
+              "mtime": 1593326511912.7556
+            },
+            {
+              "file": "apps/shell-ui/src/environments/environment.ts",
+              "ext": ".ts",
+              "mtime": 1593326511912.9055
+            },
+            {
+              "file": "apps/shell-ui/src/favicon.ico",
+              "ext": ".ico",
+              "mtime": 1593326511910.5981
+            },
+            {
+              "file": "apps/shell-ui/src/index.html",
+              "ext": ".html",
+              "mtime": 1593326511910.7495
+            },
+            {
+              "file": "apps/shell-ui/src/main.tsx",
+              "ext": ".tsx",
+              "mtime": 1593326511910.8875
+            },
+            {
+              "file": "apps/shell-ui/src/polyfills.ts",
+              "ext": ".ts",
+              "mtime": 1593326511911.0242
+            },
+            {
+              "file": "apps/shell-ui/src/styles.css",
+              "ext": ".css",
+              "mtime": 1593326511911.1636
+            },
+            {
+              "file": "apps/shell-ui/tsconfig.app.json",
+              "ext": ".json",
+              "mtime": 1593326511909.8555
+            },
+            {
+              "file": "apps/shell-ui/tsconfig.json",
+              "ext": ".json",
+              "mtime": 1593326511910.307
+            },
+            {
+              "file": "apps/shell-ui/tsconfig.spec.json",
+              "ext": ".json",
+              "mtime": 1593326511916.2776
+            }
+          ]
+        }
+      },
+      "npm:document-register-element": {
+        "type": "npm",
+        "name": "npm:document-register-element",
+        "data": {
+          "version": "1.13.1",
+          "packageName": "document-register-element",
+          "files": []
+        }
+      },
+      "npm:react": {
+        "type": "npm",
+        "name": "npm:react",
+        "data": {
+          "version": "16.13.1",
+          "packageName": "react",
+          "files": []
+        }
+      },
+      "npm:react-dom": {
+        "type": "npm",
+        "name": "npm:react-dom",
+        "data": {
+          "version": "16.13.1",
+          "packageName": "react-dom",
+          "files": []
+        }
+      },
+      "npm:@nrwl/workspace": {
+        "type": "npm",
+        "name": "npm:@nrwl/workspace",
+        "data": {
+          "version": "9.5.0-rc.1",
+          "packageName": "@nrwl/workspace",
+          "files": []
+        }
+      },
+      "npm:@types/node": {
+        "type": "npm",
+        "name": "npm:@types/node",
+        "data": {
+          "version": "~8.9.4",
+          "packageName": "@types/node",
+          "files": []
+        }
+      },
+      "npm:dotenv": {
+        "type": "npm",
+        "name": "npm:dotenv",
+        "data": {
+          "version": "6.2.0",
+          "packageName": "dotenv",
+          "files": []
+        }
+      },
+      "npm:ts-node": {
+        "type": "npm",
+        "name": "npm:ts-node",
+        "data": {
+          "version": "~7.0.0",
+          "packageName": "ts-node",
+          "files": []
+        }
+      },
+      "npm:tslint": {
+        "type": "npm",
+        "name": "npm:tslint",
+        "data": {
+          "version": "~6.0.0",
+          "packageName": "tslint",
+          "files": []
+        }
+      },
+      "npm:eslint": {
+        "type": "npm",
+        "name": "npm:eslint",
+        "data": {
+          "version": "6.8.0",
+          "packageName": "eslint",
+          "files": []
+        }
+      },
+      "npm:typescript": {
+        "type": "npm",
+        "name": "npm:typescript",
+        "data": {
+          "version": "~3.8.3",
+          "packageName": "typescript",
+          "files": []
+        }
+      },
+      "npm:prettier": {
+        "type": "npm",
+        "name": "npm:prettier",
+        "data": {
+          "version": "2.0.4",
+          "packageName": "prettier",
+          "files": []
+        }
+      },
+      "npm:@nrwl/react": {
+        "type": "npm",
+        "name": "npm:@nrwl/react",
+        "data": {
+          "version": "9.5.0-rc.1",
+          "packageName": "@nrwl/react",
+          "files": []
+        }
+      },
+      "npm:@nrwl/jest": {
+        "type": "npm",
+        "name": "npm:@nrwl/jest",
+        "data": {
+          "version": "9.5.0-rc.1",
+          "packageName": "@nrwl/jest",
+          "files": []
+        }
+      },
+      "npm:jest": {
+        "type": "npm",
+        "name": "npm:jest",
+        "data": {
+          "version": "25.2.3",
+          "packageName": "jest",
+          "files": []
+        }
+      },
+      "npm:@types/jest": {
+        "type": "npm",
+        "name": "npm:@types/jest",
+        "data": {
+          "version": "25.1.4",
+          "packageName": "@types/jest",
+          "files": []
+        }
+      },
+      "npm:ts-jest": {
+        "type": "npm",
+        "name": "npm:ts-jest",
+        "data": {
+          "version": "25.2.1",
+          "packageName": "ts-jest",
+          "files": []
+        }
+      },
+      "npm:cypress": {
+        "type": "npm",
+        "name": "npm:cypress",
+        "data": {
+          "version": "^4.1.0",
+          "packageName": "cypress",
+          "files": []
+        }
+      },
+      "npm:@nrwl/cypress": {
+        "type": "npm",
+        "name": "npm:@nrwl/cypress",
+        "data": {
+          "version": "9.5.0-rc.1",
+          "packageName": "@nrwl/cypress",
+          "files": []
+        }
+      },
+      "npm:@nrwl/web": {
+        "type": "npm",
+        "name": "npm:@nrwl/web",
+        "data": {
+          "version": "9.5.0-rc.1",
+          "packageName": "@nrwl/web",
+          "files": []
+        }
+      },
+      "npm:@types/react": {
+        "type": "npm",
+        "name": "npm:@types/react",
+        "data": {
+          "version": "16.9.38",
+          "packageName": "@types/react",
+          "files": []
+        }
+      },
+      "npm:@types/react-dom": {
+        "type": "npm",
+        "name": "npm:@types/react-dom",
+        "data": {
+          "version": "16.9.8",
+          "packageName": "@types/react-dom",
+          "files": []
+        }
+      },
+      "npm:@testing-library/react": {
+        "type": "npm",
+        "name": "npm:@testing-library/react",
+        "data": {
+          "version": "10.4.1",
+          "packageName": "@testing-library/react",
+          "files": []
+        }
+      },
+      "npm:@nrwl/eslint-plugin-nx": {
+        "type": "npm",
+        "name": "npm:@nrwl/eslint-plugin-nx",
+        "data": {
+          "version": "9.5.0-rc.1",
+          "packageName": "@nrwl/eslint-plugin-nx",
+          "files": []
+        }
+      },
+      "npm:@typescript-eslint/parser": {
+        "type": "npm",
+        "name": "npm:@typescript-eslint/parser",
+        "data": {
+          "version": "2.19.2",
+          "packageName": "@typescript-eslint/parser",
+          "files": []
+        }
+      },
+      "npm:@typescript-eslint/eslint-plugin": {
+        "type": "npm",
+        "name": "npm:@typescript-eslint/eslint-plugin",
+        "data": {
+          "version": "2.19.2",
+          "packageName": "@typescript-eslint/eslint-plugin",
+          "files": []
+        }
+      },
+      "npm:eslint-config-prettier": {
+        "type": "npm",
+        "name": "npm:eslint-config-prettier",
+        "data": {
+          "version": "6.0.0",
+          "packageName": "eslint-config-prettier",
+          "files": []
+        }
+      },
+      "npm:eslint-plugin-import": {
+        "type": "npm",
+        "name": "npm:eslint-plugin-import",
+        "data": {
+          "version": "2.21.2",
+          "packageName": "eslint-plugin-import",
+          "files": []
+        }
+      },
+      "npm:eslint-plugin-jsx-a11y": {
+        "type": "npm",
+        "name": "npm:eslint-plugin-jsx-a11y",
+        "data": {
+          "version": "6.3.1",
+          "packageName": "eslint-plugin-jsx-a11y",
+          "files": []
+        }
+      },
+      "npm:eslint-plugin-react": {
+        "type": "npm",
+        "name": "npm:eslint-plugin-react",
+        "data": {
+          "version": "7.20.0",
+          "packageName": "eslint-plugin-react",
+          "files": []
+        }
+      },
+      "npm:eslint-plugin-react-hooks": {
+        "type": "npm",
+        "name": "npm:eslint-plugin-react-hooks",
+        "data": {
+          "version": "4.0.4",
+          "packageName": "eslint-plugin-react-hooks",
+          "files": []
+        }
+      },
+      "npm:eslint-plugin-cypress": {
+        "type": "npm",
+        "name": "npm:eslint-plugin-cypress",
+        "data": {
+          "version": "^2.10.3",
+          "packageName": "eslint-plugin-cypress",
+          "files": []
+        }
+      },
+      "npm:@babel/core": {
+        "type": "npm",
+        "name": "npm:@babel/core",
+        "data": {
+          "version": "7.9.6",
+          "packageName": "@babel/core",
+          "files": []
+        }
+      },
+      "npm:@babel/preset-env": {
+        "type": "npm",
+        "name": "npm:@babel/preset-env",
+        "data": {
+          "version": "7.9.6",
+          "packageName": "@babel/preset-env",
+          "files": []
+        }
+      },
+      "npm:@babel/preset-typescript": {
+        "type": "npm",
+        "name": "npm:@babel/preset-typescript",
+        "data": {
+          "version": "7.9.0",
+          "packageName": "@babel/preset-typescript",
+          "files": []
+        }
+      },
+      "npm:@babel/preset-react": {
+        "type": "npm",
+        "name": "npm:@babel/preset-react",
+        "data": {
+          "version": "7.9.4",
+          "packageName": "@babel/preset-react",
+          "files": []
+        }
+      },
+      "npm:babel-jest": {
+        "type": "npm",
+        "name": "npm:babel-jest",
+        "data": {
+          "version": "25.1.0",
+          "packageName": "babel-jest",
+          "files": []
+        }
+      }
+    },
+    "dependencies": {
+      "shell-ui-e2e": [
+        {
+          "type": "implicit",
+          "source": "shell-ui-e2e",
+          "target": "shell-ui"
+        },
+        {
+          "type": "static",
+          "source": "shell-ui-e2e",
+          "target": "npm:@nrwl/cypress"
+        }
+      ],
+      "shell-ui": [
+        {
+          "type": "static",
+          "source": "shell-ui",
+          "target": "npm:react"
+        },
+        {
+          "type": "static",
+          "source": "shell-ui",
+          "target": "npm:@testing-library/react"
+        },
+        {
+          "type": "static",
+          "source": "shell-ui",
+          "target": "npm:react-dom"
+        }
+      ],
+      "npm:document-register-element": [],
+      "npm:react": [],
+      "npm:react-dom": [],
+      "npm:@nrwl/workspace": [],
+      "npm:@types/node": [],
+      "npm:dotenv": [],
+      "npm:ts-node": [],
+      "npm:tslint": [],
+      "npm:eslint": [],
+      "npm:typescript": [],
+      "npm:prettier": [],
+      "npm:@nrwl/react": [],
+      "npm:@nrwl/jest": [],
+      "npm:jest": [],
+      "npm:@types/jest": [],
+      "npm:ts-jest": [],
+      "npm:cypress": [],
+      "npm:@nrwl/cypress": [],
+      "npm:@nrwl/web": [],
+      "npm:@types/react": [],
+      "npm:@types/react-dom": [],
+      "npm:@testing-library/react": [],
+      "npm:@nrwl/eslint-plugin-nx": [],
+      "npm:@typescript-eslint/parser": [],
+      "npm:@typescript-eslint/eslint-plugin": [],
+      "npm:eslint-config-prettier": [],
+      "npm:eslint-plugin-import": [],
+      "npm:eslint-plugin-jsx-a11y": [],
+      "npm:eslint-plugin-react": [],
+      "npm:eslint-plugin-react-hooks": [],
+      "npm:eslint-plugin-cypress": [],
+      "npm:@babel/core": [],
+      "npm:@babel/preset-env": [],
+      "npm:@babel/preset-typescript": [],
+      "npm:@babel/preset-react": [],
+      "npm:babel-jest": []
+    }
+  },
+  "fileMap": {
+    "shell-ui-e2e": [
+      {
+        "file": "apps/shell-ui-e2e/.eslintrc",
+        "ext": "",
+        "mtime": 1593326511913.1323
+      },
+      {
+        "file": "apps/shell-ui-e2e/cypress.json",
+        "ext": ".json",
+        "mtime": 1593326511913.2803
+      },
+      {
+        "file": "apps/shell-ui-e2e/src/fixtures/example.json",
+        "ext": ".json",
+        "mtime": 1593326511914.347
+      },
+      {
+        "file": "apps/shell-ui-e2e/src/integration/app.spec.ts",
+        "ext": ".ts",
+        "mtime": 1593326511914.6616
+      },
+      {
+        "file": "apps/shell-ui-e2e/src/plugins/index.js",
+        "ext": ".js",
+        "mtime": 1593326511914.9543
+      },
+      {
+        "file": "apps/shell-ui-e2e/src/support/app.po.ts",
+        "ext": ".ts",
+        "mtime": 1593326511915.1619
+      },
+      {
+        "file": "apps/shell-ui-e2e/src/support/commands.ts",
+        "ext": ".ts",
+        "mtime": 1593326511915.3066
+      },
+      {
+        "file": "apps/shell-ui-e2e/src/support/index.ts",
+        "ext": ".ts",
+        "mtime": 1593326511915.572
+      },
+      {
+        "file": "apps/shell-ui-e2e/tsconfig.e2e.json",
+        "ext": ".json",
+        "mtime": 1593326511913.427
+      },
+      {
+        "file": "apps/shell-ui-e2e/tsconfig.json",
+        "ext": ".json",
+        "mtime": 1593326511913.584
+      }
+    ],
+    "shell-ui": [
+      {
+        "file": "apps/shell-ui/.babelrc",
+        "ext": "",
+        "mtime": 1593326511910.007
+      },
+      {
+        "file": "apps/shell-ui/.browserslistrc",
+        "ext": "",
+        "mtime": 1593326511910.154
+      },
+      {
+        "file": "apps/shell-ui/.eslintrc",
+        "ext": "",
+        "mtime": 1593326511909.697
+      },
+      {
+        "file": "apps/shell-ui/babel-jest.config.json",
+        "ext": ".json",
+        "mtime": 1593326511915.8096
+      },
+      {
+        "file": "apps/shell-ui/jest.config.js",
+        "ext": ".js",
+        "mtime": 1593326511916.0906
+      },
+      {
+        "file": "apps/shell-ui/src/app/app.css",
+        "ext": ".css",
+        "mtime": 1593326511912.025
+      },
+      {
+        "file": "apps/shell-ui/src/app/app.spec.tsx",
+        "ext": ".tsx",
+        "mtime": 1593326511912.1936
+      },
+      {
+        "file": "apps/shell-ui/src/app/app.tsx",
+        "ext": ".tsx",
+        "mtime": 1593326511912.354
+      },
+      {
+        "file": "apps/shell-ui/src/app/logo.svg",
+        "ext": ".svg",
+        "mtime": 1593326511911.378
+      },
+      {
+        "file": "apps/shell-ui/src/app/star.svg",
+        "ext": ".svg",
+        "mtime": 1593326511911.8342
+      },
+      {
+        "file": "apps/shell-ui/src/assets/.gitkeep",
+        "ext": "",
+        "mtime": 1593326511912.534
+      },
+      {
+        "file": "apps/shell-ui/src/environments/environment.prod.ts",
+        "ext": ".ts",
+        "mtime": 1593326511912.7556
+      },
+      {
+        "file": "apps/shell-ui/src/environments/environment.ts",
+        "ext": ".ts",
+        "mtime": 1593326511912.9055
+      },
+      {
+        "file": "apps/shell-ui/src/favicon.ico",
+        "ext": ".ico",
+        "mtime": 1593326511910.5981
+      },
+      {
+        "file": "apps/shell-ui/src/index.html",
+        "ext": ".html",
+        "mtime": 1593326511910.7495
+      },
+      {
+        "file": "apps/shell-ui/src/main.tsx",
+        "ext": ".tsx",
+        "mtime": 1593326511910.8875
+      },
+      {
+        "file": "apps/shell-ui/src/polyfills.ts",
+        "ext": ".ts",
+        "mtime": 1593326511911.0242
+      },
+      {
+        "file": "apps/shell-ui/src/styles.css",
+        "ext": ".css",
+        "mtime": 1593326511911.1636
+      },
+      {
+        "file": "apps/shell-ui/tsconfig.app.json",
+        "ext": ".json",
+        "mtime": 1593326511909.8555
+      },
+      {
+        "file": "apps/shell-ui/tsconfig.json",
+        "ext": ".json",
+        "mtime": 1593326511910.307
+      },
+      {
+        "file": "apps/shell-ui/tsconfig.spec.json",
+        "ext": ".json",
+        "mtime": 1593326511916.2776
+      }
+    ]
+  }
+}
