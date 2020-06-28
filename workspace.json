@@ -19,9 +19,7 @@
               "apps/shell-ui/src/favicon.ico",
               "apps/shell-ui/src/assets"
             ],
-            "styles": [
-              "apps/shell-ui/src/styles.css"
-            ],
+            "styles": ["apps/shell-ui/src/styles.css"],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -69,10 +67,7 @@
               "apps/shell-ui/tsconfig.app.json",
               "apps/shell-ui/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/shell-ui/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/shell-ui/**/*"]
           }
         },
         "test": {
@@ -107,13 +102,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "apps/shell-ui-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/shell-ui-e2e/**/*"
-            ]
+            "tsConfig": ["apps/shell-ui-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/shell-ui-e2e/**/*"]
           }
         }
       }
@@ -132,10 +122,7 @@
               "libs/ui/tsconfig.lib.json",
               "libs/ui/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/ui/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/ui/**/*"]
           }
         },
         "test": {
@@ -199,13 +186,115 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/ui-e2e/tsconfig.e2e.json"
+            "tsConfig": ["apps/ui-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/ui-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "shell-web": {
+      "root": "apps/shell-web",
+      "sourceRoot": "apps/shell-web/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/apps/shell-web",
+            "index": "apps/shell-web/src/index.html",
+            "main": "apps/shell-web/src/main.ts",
+            "polyfills": "apps/shell-web/src/polyfills.ts",
+            "tsConfig": "apps/shell-web/tsconfig.app.json",
+            "assets": [
+              "apps/shell-web/src/favicon.ico",
+              "apps/shell-web/src/assets"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/ui-e2e/**/*"
-            ]
+            "styles": ["apps/shell-web/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/shell-web/src/environments/environment.ts",
+                  "with": "apps/shell-web/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "shell-web:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "shell-web:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/shell-web/tsconfig.app.json",
+              "apps/shell-web/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/shell-web/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/shell-web/jest.config.js",
+            "tsConfig": "apps/shell-web/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/shell-web/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "shell-web-e2e": {
+      "root": "apps/shell-web-e2e",
+      "sourceRoot": "apps/shell-web-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/shell-web-e2e/cypress.json",
+            "tsConfig": "apps/shell-web-e2e/tsconfig.e2e.json",
+            "devServerTarget": "shell-web:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "shell-web:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["apps/shell-web-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/shell-web-e2e/**/*"]
           }
         }
       }

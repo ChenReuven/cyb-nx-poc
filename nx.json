@@ -33,18 +33,21 @@
     },
     "shell-ui-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "shell-ui"
-      ]
+      "implicitDependencies": ["shell-ui"]
     },
     "ui": {
       "tags": []
     },
     "ui-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "ui"
-      ]
+      "implicitDependencies": ["ui"]
+    },
+    "shell-web": {
+      "tags": []
+    },
+    "shell-web-e2e": {
+      "tags": [],
+      "implicitDependencies": ["shell-web"]
     }
   }
 }
