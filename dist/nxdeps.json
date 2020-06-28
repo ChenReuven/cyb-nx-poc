@@ -218,7 +218,7 @@
             {
               "file": "apps/shell-ui/src/app/app.tsx",
               "ext": ".tsx",
-              "mtime": 1593326511912.354
+              "mtime": 1593333019429.2664
             },
             {
               "file": "apps/shell-ui/src/app/logo.svg",
@@ -284,6 +284,118 @@
               "file": "apps/shell-ui/tsconfig.spec.json",
               "ext": ".json",
               "mtime": 1593326511916.2776
+            }
+          ]
+        }
+      },
+      "ui": {
+        "name": "ui",
+        "type": "lib",
+        "data": {
+          "root": "libs/ui",
+          "sourceRoot": "libs/ui/src",
+          "projectType": "library",
+          "schematics": {},
+          "architect": {
+            "lint": {
+              "builder": "@nrwl/linter:lint",
+              "options": {
+                "linter": "eslint",
+                "tsConfig": [
+                  "libs/ui/tsconfig.lib.json",
+                  "libs/ui/tsconfig.spec.json"
+                ],
+                "exclude": [
+                  "**/node_modules/**",
+                  "!libs/ui/**/*"
+                ]
+              }
+            },
+            "test": {
+              "builder": "@nrwl/jest:jest",
+              "options": {
+                "jestConfig": "libs/ui/jest.config.js",
+                "tsConfig": "libs/ui/tsconfig.spec.json",
+                "passWithNoTests": true
+              }
+            }
+          },
+          "tags": [],
+          "files": [
+            {
+              "file": "libs/ui/.babelrc",
+              "ext": "",
+              "mtime": 1593332744957.679
+            },
+            {
+              "file": "libs/ui/.eslintrc",
+              "ext": "",
+              "mtime": 1593332744956.91
+            },
+            {
+              "file": "libs/ui/README.md",
+              "ext": ".md",
+              "mtime": 1593332744957.1753
+            },
+            {
+              "file": "libs/ui/babel-jest.config.json",
+              "ext": ".json",
+              "mtime": 1593332744958.5493
+            },
+            {
+              "file": "libs/ui/jest.config.js",
+              "ext": ".js",
+              "mtime": 1593332744959.0427
+            },
+            {
+              "file": "libs/ui/src/index.ts",
+              "ext": ".ts",
+              "mtime": 1593332808214.954
+            },
+            {
+              "file": "libs/ui/src/lib/test/test.css",
+              "ext": ".css",
+              "mtime": 1593332808214.0164
+            },
+            {
+              "file": "libs/ui/src/lib/test/test.spec.tsx",
+              "ext": ".tsx",
+              "mtime": 1593332808214.381
+            },
+            {
+              "file": "libs/ui/src/lib/test/test.tsx",
+              "ext": ".tsx",
+              "mtime": 1593332808214.6619
+            },
+            {
+              "file": "libs/ui/src/lib/ui.css",
+              "ext": ".css",
+              "mtime": 1593332744959.9392
+            },
+            {
+              "file": "libs/ui/src/lib/ui.spec.tsx",
+              "ext": ".tsx",
+              "mtime": 1593332744960.405
+            },
+            {
+              "file": "libs/ui/src/lib/ui.tsx",
+              "ext": ".tsx",
+              "mtime": 1593332744960.8796
+            },
+            {
+              "file": "libs/ui/tsconfig.json",
+              "ext": ".json",
+              "mtime": 1593332744957.884
+            },
+            {
+              "file": "libs/ui/tsconfig.lib.json",
+              "ext": ".json",
+              "mtime": 1593332744957.486
+            },
+            {
+              "file": "libs/ui/tsconfig.spec.json",
+              "ext": ".json",
+              "mtime": 1593332744959.4229
             }
           ]
         }
@@ -630,6 +742,11 @@
         {
           "type": "static",
           "source": "shell-ui",
+          "target": "ui"
+        },
+        {
+          "type": "static",
+          "source": "shell-ui",
           "target": "npm:react"
         },
         {
@@ -641,6 +758,18 @@
           "type": "static",
           "source": "shell-ui",
           "target": "npm:react-dom"
+        }
+      ],
+      "ui": [
+        {
+          "type": "static",
+          "source": "ui",
+          "target": "npm:react"
+        },
+        {
+          "type": "static",
+          "source": "ui",
+          "target": "npm:@testing-library/react"
         }
       ],
       "npm:document-register-element": [],
@@ -773,7 +902,7 @@
       {
         "file": "apps/shell-ui/src/app/app.tsx",
         "ext": ".tsx",
-        "mtime": 1593326511912.354
+        "mtime": 1593333019429.2664
       },
       {
         "file": "apps/shell-ui/src/app/logo.svg",
@@ -839,6 +968,83 @@
         "file": "apps/shell-ui/tsconfig.spec.json",
         "ext": ".json",
         "mtime": 1593326511916.2776
+      }
+    ],
+    "ui": [
+      {
+        "file": "libs/ui/.babelrc",
+        "ext": "",
+        "mtime": 1593332744957.679
+      },
+      {
+        "file": "libs/ui/.eslintrc",
+        "ext": "",
+        "mtime": 1593332744956.91
+      },
+      {
+        "file": "libs/ui/README.md",
+        "ext": ".md",
+        "mtime": 1593332744957.1753
+      },
+      {
+        "file": "libs/ui/babel-jest.config.json",
+        "ext": ".json",
+        "mtime": 1593332744958.5493
+      },
+      {
+        "file": "libs/ui/jest.config.js",
+        "ext": ".js",
+        "mtime": 1593332744959.0427
+      },
+      {
+        "file": "libs/ui/src/index.ts",
+        "ext": ".ts",
+        "mtime": 1593332808214.954
+      },
+      {
+        "file": "libs/ui/src/lib/test/test.css",
+        "ext": ".css",
+        "mtime": 1593332808214.0164
+      },
+      {
+        "file": "libs/ui/src/lib/test/test.spec.tsx",
+        "ext": ".tsx",
+        "mtime": 1593332808214.381
+      },
+      {
+        "file": "libs/ui/src/lib/test/test.tsx",
+        "ext": ".tsx",
+        "mtime": 1593332808214.6619
+      },
+      {
+        "file": "libs/ui/src/lib/ui.css",
+        "ext": ".css",
+        "mtime": 1593332744959.9392
+      },
+      {
+        "file": "libs/ui/src/lib/ui.spec.tsx",
+        "ext": ".tsx",
+        "mtime": 1593332744960.405
+      },
+      {
+        "file": "libs/ui/src/lib/ui.tsx",
+        "ext": ".tsx",
+        "mtime": 1593332744960.8796
+      },
+      {
+        "file": "libs/ui/tsconfig.json",
+        "ext": ".json",
+        "mtime": 1593332744957.884
+      },
+      {
+        "file": "libs/ui/tsconfig.lib.json",
+        "ext": ".json",
+        "mtime": 1593332744957.486
+      },
+      {
+        "file": "libs/ui/tsconfig.spec.json",
+        "ext": ".json",
+        "mtime": 1593332744959.4229
       }
     ]
   }

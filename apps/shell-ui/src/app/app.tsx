@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import './app.css';
+import "./app.css";
 
-import { ReactComponent as Logo } from './logo.svg';
-import star from './star.svg';
+import { ReactComponent as Logo } from "./logo.svg";
+import star from "./star.svg";
+import { Test } from "@cyb/ui";
 
 export const App = () => {
   /*
@@ -26,7 +27,7 @@ export const App = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {' '}
+            {" "}
             If you like Nx, please give it a star:
             <div className="github-star-badge">
               <img src={star} className="material-icons" alt="" />
@@ -108,6 +109,10 @@ nx affected:test
 nx affected:e2e
   `}</pre>
         </details>
+
+        <h1>
+          <Test />
+        </h1>
       </main>
     </div>
   );

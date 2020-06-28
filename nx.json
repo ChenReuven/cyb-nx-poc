@@ -28,6 +28,9 @@
     "shell-ui-e2e": {
       "tags": [],
       "implicitDependencies": ["shell-ui"]
+    },
+    "ui": {
+      "tags": []
     }
   }
 }
